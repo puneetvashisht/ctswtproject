@@ -1,0 +1,29 @@
+<form name="wform" ng-submit="submitForm()" novalidate>
+    <!-- NAME -->
+    <div class="form-group" ng-class="{ 'has-error' : wform.title.$invalid && !wform.title.$pristine }">
+        <label>Title (Should not Empty)</label>
+        <input type="text" name="title" class="form-control" ng-model="workout.title" ng-minlength="3" required>
+        <p ng-show="wform.title.$invalid && !wform.title.$pristine" class="help-block">workout title is required.</p>
+        <p ng-show="wform.title.$error.minlength" class="help-block">Should contain 3 character</p>
+    </div>
+    
+    <!-- USERNAME -->
+    <div class="form-group" ng-class="{ 'has-error' : wform.note.$invalid && !wform.note.$pristine }">
+        <label>Note</label>
+        <textarea class="form-control" rows="5" name="note" ng-model="workout.note"></textarea>
+        <!-- <input type="text" name="note" class="form-control" ng-model="workout.note"> -->
+
+    </div>
+    
+    <!-- Age -->
+    <div class="form-group" ng-class="{ 'has-error' : wform.cbpm.$invalid && !wform.cbpm.$pristine }">
+        <label>Calories Burnt Per Minute (Should be Number Only)</label>
+        <input type="number" name="cbpm" class="form-control" ng-model="workout.cbpm" ng-min="1" required>
+        <p ng-show="wform.cbpm.$error.min" class="help-block">Should be a positive value above zero.</p>
+    </div>
+    
+
+    
+    <button type="submit" class="btn btn-primary" ng-disabled="wform.$invalid">Add Workout</button><br><br>
+    <label>( Submit Button disabled if form information is not Valid/Empty )</label>
+</form>
