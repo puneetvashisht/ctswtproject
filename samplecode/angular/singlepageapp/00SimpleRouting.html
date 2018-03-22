@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="#/">Home</a> | <a href="#/payment">Payment</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+    var app = angular.module('myApp', ['ngRoute']);
+
+    app.controller('AppCtrl', function ($scope, $routeParams) {
+        console.log($routeParams.country);
+        $scope.someVal = "Dynamic Values from Controller"
+    });
+
+    app.config(function ($routeProvider) {
+        $routeProvider.when("/", {
+            templateUrl: 'home.html',
+            controller: 'AppCtrl'
+        }).when("/address:/country:/city:/pin", {
+            template: 'Contents of Personal Details Page'
+        })
+                .when("/payment", {
+                    template: 'Contents of Payment Details Page'
+                })
+                .when("/confirm", {
+                    template: 'Contents of Confirmation Page'
+                })
+                .otherwise({
+//                    template: 'Error Page, Not Found'
+                    redirectTo: "/"
+                })
+    });
+
+</script>
+
+
+<div ng-app="myApp">
+    <ng-view></ng-view>
+</div>
+</body>
+
+</html>
