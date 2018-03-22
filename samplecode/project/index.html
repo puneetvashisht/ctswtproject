@@ -22,6 +22,10 @@
 
         app.controller('WorkOutCtrl', function ($scope) {
             console.log('Write controller code here - LOGIC')
+            $scope.onSubmit = function(){
+                console.log('On Submit')
+                console.log($scope.workout);
+            }
         });
 
         app.config(function ($routeProvider) {
