@@ -23,7 +23,10 @@
         app.controller('WorkOutCtrl', function ($scope, $http) {
             console.log('Write controller code here - LOGIC')
             $http({
-                    url: 'dummydb/dummyworkouts.json',
+                    // url: 'dummydb/dummyworkouts.json',
+                    url: 'http://localhost:3000/workouts',
+
+                    // url: 'http://localhost:8080/spring-web-jpa/mvc/api/workouts',
                     method:'GET',
                    
                 }).success(function(data){
@@ -42,12 +45,13 @@
                 console.log('On Submit')
                 console.log($scope.workout);
                 $http({
-                    url: 'dummyurl',
+                    url: 'http://localhost:3000/workouts',
                     method:'POST',
                     data: $scope.workout
                 }).success(function(data){
                     console.log('POST is success');
                     console.log(data);
+                    $scope.workouts = data
                 })
             }
         });

@@ -28,3 +28,11 @@
     Day 9. TEST cases for backend & frontend
 
     Day 10. Buffer Day
+
+
+    Steps for YOEMAN -- UI BUILD
+
+
+	1. Npm intall -g yo
+	2. Npm install angular-generator
+    3. Yo angular
